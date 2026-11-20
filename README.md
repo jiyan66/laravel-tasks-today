@@ -97,12 +97,6 @@ exist. Do not overwrite an existing configured `.env`.
 | Tomorrow | 3 |
 | Total | 9 |
 
-Exactly one profile is seeded:
-
-- Username: `gian.mistica`
-- Full name: Joseph Gian Carlo Mistica
-- Email: `gian.mistica@example.com` (sample address)
-
 The default task status is `pending`. Example statuses include `completed`
 and `in_progress`. Re-running `php artisan db:seed` updates the nine known demo
 titles relative to the current date without duplicating them. It also updates the
@@ -186,9 +180,9 @@ Create a new empty GitHub repository, then run these commands from this project:
 git init
 git add .
 git status
-git commit -m "Build Laravel Tasks for Today management system"
+git commit -m ""
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/laravel-tasks.git
+git remote add origin https://github.com/YOUR_USERNAME/??.git
 git push -u origin main
 ```
 
@@ -212,11 +206,3 @@ the hosted URL must be created and checked separately.
 | Missing vendor/autoload.php | Run `composer install`. |
 | Other users already exist | Select a new dedicated database; do not delete your POS data. |
 | Error after changing `.env` | Run `php artisan config:clear` locally. |
-
-## References
-
-- Laravel migrations: <https://laravel.com/docs/13.x/migrations>
-- Laravel seeders: <https://laravel.com/docs/13.x/seeding>
-- Eloquent: <https://laravel.com/docs/13.x/eloquent>
-- Laravel testing: <https://laravel.com/docs/13.x/testing>
-- InfinityFree deployment guide: <https://forum.infinityfree.com/t/how-to-install-a-laravel-site-on-infinityfree/118578>
