@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use RuntimeException;
 
 class UserSeeder extends Seeder
 {
@@ -12,13 +11,7 @@ class UserSeeder extends Seeder
     {
         $username = 'gian.mistica';
 
-        // Do not delete existing people just to meet the one-user requirement.
-        if (User::query()->where('username', '!=', $username)->exists()) {
-            throw new RuntimeException(
-                'Use a separate tasks database. It already contains other users; no records were deleted.'
-            );
-        }
-
+        // Keep other login accounts and existing credential hashes intact.
         User::query()->updateOrCreate(
             ['username' => $username],
             [

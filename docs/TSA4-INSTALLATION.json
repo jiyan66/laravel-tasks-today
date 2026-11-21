@@ -1,0 +1,18 @@
+{
+    "package":  "laravel/breeze",
+    "versions":  [
+                     "v2.4.2"
+                 ],
+    "scaffold_command":  "php artisan breeze:install blade --no-interaction",
+    "customized":  [
+                       "registration fields",
+                       "Tasks layouts",
+                       "public pages and protected task management",
+                       "TSA4-specific tests"
+                   ],
+    "retained_breeze_files":  {
+                                  "app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php":  "aaea7217b1eeeaa061b07c4e820d995fe180e6816e5866a62295c2f6f0c12f4b",
+                                  "app\\Http\\Requests\\Auth\\LoginRequest.php":  "d64740bf9748fcd0b33a14d72aa42ec2868f2579746b3e1701426006c7eaa6a3",
+                                  "routes\\auth.php":  "ae97a0c4ed28bd79ac0ff8c3a11539489518e1da4f17a3cf7a2b606b96dfd765"
+                              }
+}

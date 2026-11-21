@@ -13,8 +13,8 @@
 
     <section class="panel about-panel" aria-labelledby="about-heading">
         <h2 id="about-heading">Tasks for Today Management System</h2>
-        <p>This application brings today's tasks, the complete task schedule, and a user profile into four connected pages.</p>
-        <p>It was developed for IT0049 Web System Technologies, Technical Summative Assessment 3.</p>
+        <p>This application brings today's tasks, the complete task schedule, and a user profile into four public pages, with authenticated task management and completion notifications.</p>
+        <p>It was developed for IT0049 Web System Technologies, Technical Summative Assessment 4.</p>
 
         <div class="about-divider"></div>
         <p class="eyebrow">DEVELOPED BY</p>

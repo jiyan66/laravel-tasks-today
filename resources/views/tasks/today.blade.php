@@ -14,10 +14,12 @@
 
     <section class="stats" aria-label="Today's task summary">
         <div class="stat"><span>Today's tasks</span><strong>{{ $tasks->count() }}</strong></div>
-        <div class="stat"><span>Completed</span><strong>{{ $tasks->where('status', 'completed')->count() }}</strong></div>
+        <div class="stat"><span>Completed</span><strong>{{ $tasks->where('status', 'done')->count() }}</strong></div>
         <div class="stat"><span>In progress</span><strong>{{ $tasks->where('status', 'in_progress')->count() }}</strong></div>
         <div class="stat"><span>Pending</span><strong>{{ $tasks->where('status', 'pending')->count() }}</strong></div>
     </section>
+
+    @auth<div class="create-action"><a class="button" href="{{ route('tasks.create') }}">Create task</a></div>@endauth
 
     <section class="panel" aria-labelledby="today-heading">
         <div class="panel-heading">

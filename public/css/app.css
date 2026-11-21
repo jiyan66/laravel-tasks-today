@@ -80,3 +80,13 @@ dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
     .profile-intro, .about-panel { padding: 24px; }
     .profile-details { padding-inline: 24px; }
 }
+
+/* TSA4 forms, auth navigation, feedback and archive actions */
+.auth-links {display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13px}
+.auth-links form {margin:0}.text-button {border:0;background:none;color:inherit;cursor:pointer;font:inherit;padding:0;text-decoration:underline}
+.create-action {margin:0 0 20px}.form-panel {padding:28px;max-width:760px}.field {margin-bottom:20px}
+.field label {display:block;font-weight:600;margin-bottom:7px}.field input,.field select {width:100%;padding:11px;border:1px solid #aab8ca;border-radius:6px;font:inherit;background:white;color:#17263c}
+.field-error {color:#9c2430;font-size:14px}.field [aria-invalid=true] {border-color:#9c2430}.form-note {color:#596579;font-size:14px;line-height:1.6}.form-actions {display:flex;gap:18px;align-items:center;margin-top:22px}
+.notice {padding:15px 20px;margin:0 0 22px;border:1px solid;border-radius:8px}.notice p {margin-top:0}.notice-success {background:#e9f7ef;color:#22573c;border-color:#b8deca}.notice-error {background:#fff0f0;color:#91202a;border-color:#edb3b9}
+.task-actions {min-width:170px}.task-actions details {margin-top:10px}.task-actions summary {cursor:pointer;color:#9c2430}.task-actions details p {white-space:normal;max-width:230px}.button-danger {background:#a32330;color:white}.text-link {font-weight:600}
+@media(max-width:760px){.header-inner{flex-wrap:wrap;gap:16px}.auth-links{width:100%}.form-panel{padding:18px}}

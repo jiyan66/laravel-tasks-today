@@ -12,9 +12,9 @@ class TaskSeeder extends Seeder
         $today = today()->toImmutable();
 
         $records = [
-            ['Review Laravel MVC notes', 'completed', -1],
-            ['Prepare the database schema', 'completed', -1],
-            ['Run migrations and seeders', 'completed', 0],
+            ['Review Laravel MVC notes', 'done', -1],
+            ['Prepare the database schema', 'done', -1],
+            ['Run migrations and seeders', 'done', 0],
             ['Build the Welcome page', 'in_progress', 0],
             ['Verify the task date filter', 'pending', 0],
             ['Update the project README', 'pending', 0],

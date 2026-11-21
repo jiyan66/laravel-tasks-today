@@ -7,6 +7,9 @@
     </testsuites>
     <source><include><directory>app</directory></include></source>
     <php>
+        <env name="MAIL_MAILER" value="array" force="true"/>
+        <env name="TASK_COMPLETION_RECIPIENT" value="completion@example.test" force="true"/>
+        <env name="BCRYPT_ROUNDS" value="4" force="true"/>
         <env name="APP_ENV" value="testing" force="true"/>
         <env name="APP_KEY" value="base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" force="true"/>
         <env name="APP_TIMEZONE" value="Asia/Manila" force="true"/>

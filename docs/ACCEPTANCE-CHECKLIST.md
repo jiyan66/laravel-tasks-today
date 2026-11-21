@@ -1,45 +1,43 @@
-# Acceptance checklist
+# TSA4 acceptance checklist
 
-Run local setup and `composer test` first. The tests use a separate in-memory
-database and require Composer's development dependencies.
+## Existing public behavior
 
-## Required data
+- Welcome shows only today's non-archived tasks, based on APP_TIMEZONE=Asia/Manila.
+- Task List displays all non-archived tasks ordered by date then ID.
+- Profile displays the configured demo user and remains accessible without login.
+- About identifies the developer and TSA4. All four pages have working navigation.
+- A fresh demo seed has nine tasks over three dates and one user. Existing live
+  data counts can differ after real CRUD; the upgrader does not reset those counts.
 
-- [ ] Nine tasks exist in the application database.
-- [ ] There are three distinct task dates after seeding.
-- [ ] Four tasks have today's date in Asia/Manila.
-- [ ] Exactly one user exists, with a unique username.
-- [ ] The database default for task status is pending.
+## Authentication and task management
 
-## Required pages
+- Logged-out visitors can view the four pages, login and registration.
+- GET /tasks/create and /tasks/ID/edit redirect guests to login.
+- Guest POST/PUT/PATCH/DELETE attempts cannot change records or send mail.
+- Login returns the visitor to the originally requested protected page.
+- Registration requires username/full_name, unique lowercase email and confirmed
+  password. Login uses EMAIL, not username. No shared/default password is supplied.
+- Logged-in users can create and edit valid tasks. Invalid/missing fields, unknown
+  statuses, titles over 150 characters and impossible dates show errors/old input.
+- Forms include CSRF tokens; update/archive forms specify their HTTP method.
+- Archiving retains the row with is_archived=1, hides it from both public lists,
+  and rejects direct edit/update/repeated archive requests for that record.
+- Logout uses the form, invalidates the session and blocks protected pages again.
+- The public profile remains the demo profile when a different user logs in.
 
-- [ ] `/` shows four tasks immediately after seeding, with no yesterday/tomorrow rows.
-- [ ] `/tasks` shows all nine tasks in ascending date order.
-- [ ] `/profile` shows the one seeded user's ID, username, full name, and email.
-- [ ] `/about` identifies Joseph Gian Carlo Mistica as developer.
-- [ ] All four navigation links work from every page.
-- [ ] At mobile width, navigation wraps and task tables scroll within their panel.
-- [ ] The current page is highlighted in navigation.
-- [ ] The empty Today state works when no records match the current date.
+## Completion notification
 
-## Hosted application
+- Use MAIL_MAILER=log and a configured TASK_COMPLETION_RECIPIENT.
+- Pending -> Done in Edit generates a log message with correct task details.
+- Saving Done again (including a title/date edit) generates no new completion mail.
+- Invalid updates, archiving and ordinary non-completion edits send nothing.
+- See TSA4-MAIL.md for exact demonstration steps and optional sandbox SMTP.
 
-- [ ] The hosted copy uses a separate MySQL tasks database.
-- [ ] APP_ENV is production, APP_DEBUG is false, and APP_URL matches the website.
-- [ ] HTTPS works before SESSION_SECURE_COOKIE is set to true.
-- [ ] `public/css/app.css` loads and all pages match the submitted source.
-- [ ] `/.env`, `/composer.json`, `/database/sql/infinityfree-import.sql`,
-      and `/storage/logs/laravel.log` do not reveal file contents.
-- [ ] The uploaded archive has been deleted after extraction.
-- [ ] PHP source larger than InfinityFree's file limit has not disappeared on upload.
+## Verification and submission
 
-## Submission
-
-- [ ] GitHub repository contains application files, migrations, seeders, and README.
-- [ ] The locally generated composer.lock is committed.
-- [ ] No real .env, credentials, vendor directory, or database file is committed.
-- [ ] README includes the actual repository URL and hosted URL.
-- [ ] Both submitted links open successfully for the intended reviewer.
-
-The completed POS application can remain in its own folder, repository, and
-hosting account/subdomain throughout this work.
+- Run VERIFY.ps1 successfully on the development machine.
+- Repeat public/protected access, task CRUD/archive and mail-log checks on hosting.
+- Commit complete generated Breeze source plus custom changes and BOTH lock files.
+- Keep migrations/seeders in Git; keep .env, data, private logs and backups out.
+- README explains setup and mail configuration, and contains actual GitHub and live URLs.
+- No claims of a live deployment should be made before testing the hosted site.

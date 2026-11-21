@@ -11,7 +11,12 @@ class Task extends Model
 
     protected function casts(): array
     {
-        return ['task_date' => 'date'];
+        return ['task_date' => 'date', 'is_archived' => 'boolean'];
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('is_archived', false);
     }
 
     // A reusable Eloquent query scope; the database performs the date filter.

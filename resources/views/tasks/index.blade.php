@@ -7,10 +7,12 @@
         <div>
             <p class="eyebrow">THE BIG PICTURE</p>
             <h1>Every task, in one place.</h1>
-            <p class="subtitle">All scheduled work, ordered from the earliest date to the latest.</p>
+            <p class="subtitle">All non-archived work, ordered from the earliest date to the latest.</p>
         </div>
         <a class="button button-light" href="{{ route('home') }}">Back to today</a>
     </div>
+
+    @auth<div class="create-action"><a class="button" href="{{ route('tasks.create') }}">Create task</a></div>@endauth
 
     <section class="panel" aria-labelledby="all-tasks-heading">
         <div class="panel-heading">

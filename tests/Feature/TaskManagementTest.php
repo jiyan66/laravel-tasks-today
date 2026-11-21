@@ -67,7 +67,7 @@ class TaskManagementTest extends TestCase
     {
         $this->get('/about')->assertOk()
             ->assertSee('Joseph Gian Carlo Mistica')
-            ->assertSee('Technical Summative Assessment 3');
+            ->assertSee('Technical Summative Assessment 4');
     }
 
     public function test_reseeding_updates_relative_dates_without_duplicate_records(): void
@@ -117,19 +117,18 @@ class TaskManagementTest extends TestCase
         }
     }
 
-    public function test_seeder_does_not_delete_unrelated_users(): void
+    public function test_seeder_preserves_existing_login_accounts_and_passwords(): void
     {
-        User::query()->create(['username' => 'existing', 'full_name' => 'Existing User', 'email' => 'existing@example.com']);
-
-        try {
-            $this->seed();
-            $this->fail('The seeder must reject a database containing other users.');
-        } catch (\RuntimeException $exception) {
-            $this->assertStringContainsString('separate tasks database', $exception->getMessage());
-        }
-
-        $this->assertDatabaseCount('users', 1);
-        $this->assertDatabaseHas('users', ['username' => 'existing']);
-        $this->assertDatabaseCount('tasks', 0);
+        $this->seed();
+        $demo = User::query()->where('username', 'gian.mistica')->firstOrFail();
+        $demo->password = 'Testing123!';
+        $demo->save();
+        $hash = $demo->password;
+        $this->signIn();
+        $this->seed();
+        $this->assertDatabaseCount('users', 2);
+        $this->assertSame($hash, $demo->fresh()->password);
+        $this->assertDatabaseHas('users', ['username' => 'operator']);
+        $this->assertDatabaseCount('tasks', 9);
     }
 }
